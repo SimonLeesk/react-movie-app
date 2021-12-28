@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './Header'
-import '../CSS/App.css'
+//import '../CSS/App.css'
 import PageHome from './PageHome'
 import PageFavorite from './PageFavorite'
 import PageAbout from './PageAbout'
@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
     <div className="wrapper">
       <Header />
-      <Routes>
+        <Routes>
               <Route path="/" element={<PageHome sort='popular'/>} />
               <Route path='/sort/popular' element={<PageHome sort='popular'/>} />
               <Route path='/sort/top-rated' element={<PageHome sort='top_rated'/>} />
@@ -22,7 +22,7 @@ function App() {
               <Route path="/favorite" element={<PageFavorite />} />
               <Route path="/about" element={<PageAbout />} />
               <Route path="/individual/:id" element={<PageIndividual />} />
-            </Routes>
+        </Routes>
       <Footer />
     </div>
     </BrowserRouter>

@@ -47,10 +47,11 @@ const PageHome = ({ sort }) => {
             </select>
         
         
-        <nav className="nav-sort">
+            <nav className="nav-sort">
           
-        </nav>
-            {moviesData !== null && 
+            </nav>
+            <div className="movies-box">  
+            {moviesData !== null &&               
                 moviesData.map(movie =>
                     <div className="card" key={movie.id}>
                         <div className="posterImage">
@@ -64,7 +65,9 @@ const PageHome = ({ sort }) => {
                         <NavLink to={`/individual/${movie.id}`}> More Info </NavLink>
                         </div>
                     </div>
+                    
             )}
+            </div>
         </section>
     )
 

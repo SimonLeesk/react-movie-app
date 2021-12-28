@@ -56,14 +56,14 @@ const PageIndividual = () => {
                 // moviesData.map(movie =>
                     <div className="card">
                         <div className="posterImage">
-                        <img src={`https://image.tmdb.org/t/p/w500/${moviesData.poster_path}`} alt=" " />
+                            <img src={`https://image.tmdb.org/t/p/w500/${moviesData.poster_path}`} alt="no images" /> 
                         </div>
                         <div className="movieInfo">
-                        <h3>{`Title: ${moviesData.title}`}</h3>
-                        <p>{`Released date: ${moviesData.release_date}`}</p>
-                        <p>{`Rating: ${moviesData.vote_average}`}</p>
-                        <p>{`Overview: ${moviesData.overview}`}</p>
-                        <NavLink to={`/individual/${moviesData.title}`}> More Info </NavLink>
+                            <h3>{`Title: ${moviesData.title}`}</h3>
+                            <p>{`Released date: ${moviesData.release_date}`}</p>
+                            <p>{`Rating: ${moviesData.vote_average}`}</p>
+                            <p>{`Overview: ${moviesData.overview}`}</p>
+                            <NavLink to={`/individual/${moviesData.title}`}> More Info </NavLink>
                         </div>
                     </div>
             }

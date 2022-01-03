@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { API_TOKEN } from '../globals/globals';
-import { NavLink, useNavigate } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import noPoster from "../images/no-movie-poster.jpg"
 
 
 const PageHome = ({ sort }) => {
@@ -33,11 +33,14 @@ const PageHome = ({ sort }) => {
         const item = e.target.value
         navigate(item, { replace: true });
     }
+    function clicked(movieId){
+        navigate(`individual/${movieId}`, { replace: true });
+    }
 
     return (
         <section className="home-page">
-
-            <label htmlFor="myList">Sort</label>
+            <div className="sortMenu">
+            <label htmlFor="myList"></label>
             <select id="myList" name="myList" onChange={gotClicked}>
                 <option value="">Select</option>
                 <option value="/sort/popular">Popular</option>
@@ -45,29 +48,32 @@ const PageHome = ({ sort }) => {
                 <option value="/sort/now-playing">Now Playing</option>
                 <option value="/sort/upcoming">Upcoming</option>
             </select>
+            </div>
         
-        
-            <nav className="nav-sort">
+        <nav className="nav-sort">
           
-            </nav>
-            <div className="movies-box">  
-            {moviesData !== null &&               
-                moviesData.map(movie =>
-                    <div className="card" key={movie.id}>
-                        <div className="posterImage">
-                        <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}  alt=" " />
+        </nav>
+        <div className="cards">
+            {moviesData !== null && 
+                moviesData.map((movie, idForCss) =>
+                    <div className="card" key={movie.id} onClick={() => clicked(movie.id)}>
+                        <div className="posterImage"  >
+                            {movie.poster_path !== null ?
+                            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}  alt={movie.title} />:
+                            <img src={noPoster} alt="No Images"></img>
+                            }
                         </div>
                         <div className="movieInfo">
-                        <h3>{`Title: ${movie.title}`}</h3>
-                        <p>{`Released date: ${movie.release_date}`}</p>
-                        <p>{`Rating: ${movie.vote_average}`}</p>
-                        <p>{`Overview: ${movie.overview}`}</p>
-                        <NavLink to={`/individual/${movie.id}`}> More Info </NavLink>
+                            <h3>{`Title: ${movie.title}`}</h3>
+                            <p>{`Released date: ${movie.release_date}`}</p>
+                            <p>{`Rating: ${movie.vote_average}`}</p>
+                            {movie.overview.length > 80 ? <p>{movie.overview.substring(0, 80)} . . .</p> : <p>{movie.overview}</p>}
+                            <Link to={`/individual/${movie.id}`}> More Info </Link>
                         </div>
                     </div>
                     
             )}
-            </div>
+        </div>
         </section>
     )
 

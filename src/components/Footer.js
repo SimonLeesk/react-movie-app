@@ -3,8 +3,8 @@ const Footer = () => {
  
     return (
         <footer>
-            <p>Movie App</p>
-            <p>Created by Ryan Lim & Simon Lee</p>
+            <p>Educational use only</p>
+            <p>&copy; 2022 Ryan Lim & Simon Lee</p>
         </footer>
     );
 }
